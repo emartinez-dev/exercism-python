@@ -2,8 +2,10 @@ def flatten(iterable, valid_items=None):
     if valid_items == None:
         valid_items = []
     for i in iterable:
-        if not isinstance(i, list) and i is not None:
+        if i is None:
+            pass
+        if not isinstance(i, list):
             valid_items.append(i)
         elif isinstance(i, list):
-            flatten(i, valid_items)
+            valid_items.extend(i)
     return valid_items
